@@ -1,11 +1,335 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>My Second Site</title>
-  </head>
-  <body>
-    <h1>Welcome to my second website!</h1>
-    <p>Hosted with GitHub Pages 🎉</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex - Portfolio</title>
+    <style>
+        /* General Reset and Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a; /* Dark background like the video */
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #0a0a0a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: #bd00ff; /* Purple accent */
+        }
+
+        .contact-btn {
+            background: linear-gradient(90deg, #bd00ff, #0072ff);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-avatar {
+            width: 200px;
+            height: 200px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            /* Placeholder for the 3D avatar seen in video */
+            background-image: url('https://via.placeholder.com/200/333333/ffffff?text=Avatar');
+            background-size: cover;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            background-color: #111;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Services Section */
+        .services-list {
+            margin-top: 40px;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .service-item:hover {
+            padding-left: 20px; /* Slight movement effect */
+            background-color: #111;
+        }
+
+        .service-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #555;
+            margin-right: 20px;
+        }
+
+        .service-title {
+            font-size: 2rem;
+            flex-grow: 1;
+            text-align: left;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: #222;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .project-card:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f4f4f4;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ALEX.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="contact-btn">Contact Me</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-avatar"></div> <h1>Hi, I'm Alex</h1>
+        <p>A designer passionate about crafting bold and memorable digital projects.</p>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>With over five years of experience in design, I specialize in branding, web design, and user experience. Let's create something amazing together!</p>
+    </section>
+
+    <section id="services">
+        <h2>Services</h2>
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-number">01</span>
+                <span class="service-title">3D Modeling</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">02</span>
+                <span class="service-title">UX/UI Design</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">03</span>
+                <span class="service-title">3D Animation</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">04</span>
+                <span class="service-title">Branding</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card"><img src="https://via.placeholder.com/400x300/333/fff?text=Project+1" alt="Project 1"></div>
+            <div class="project-card"><img src="https://via.placeholder.com/400x300/444/fff?text=Project+2" alt="Project 2"></div>
+            <div class="project-card"><img src="https://via.placeholder.com/400x300/555/fff?text=Project+3" alt="Project 3"></div>
+            <div class="project-card"><img src="https://via.placeholder.com/400x300/666/fff?text=Project+4" alt="Project 4"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>What Clients Are Saying</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Alex created an amazing experience for our users. Highly recommended!"</p>
+                <h4>- Sarah J.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The 3D modeling work was top notch. A true professional."</p>
+                <h4>- Mike T.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Bold designs that really standout. Loved working with Alex."</p>
+                <h4>- Emily R.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <h2>Let's Get<br>In Touch</h2>
+            <p>alex@3dturner.com</p>
+        </div>
+        <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="5" placeholder="Message"></textarea>
+            <button type="submit">SEND</button>
+        </form>
+    </section>
+
+</body>
 </html>
